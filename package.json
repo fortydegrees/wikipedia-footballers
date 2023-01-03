@@ -1,0 +1,36 @@
+{
+  "name": "wikipedia-footballers",
+  "homepage": "https://fortydegrees.github.io/wikipedia-footballers",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "parcel index.html --port 3000",
+    "indexer": "node scripts/populateTypesenseIndex.js",
+    "typesenseServer": "docker run -i -p 8108:8108 -v`pwd`/typesense-server-data/:/data typesense/typesense:0.22.2 --data-dir /data --api-key=xyz --listen-port 8108 --enable-cors",
+    "build": "parcel build index.html --public-url https://fortydegrees.github.io/wikipedia-footballers",
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "devDependencies": {
+    "babel-eslint": "10.1.0",
+    "eslint": "7.28.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "2.23.4",
+    "eslint-plugin-prettier": "3.4.0",
+    "gh-pages": "^4.0.0",
+    "parcel-bundler": "^1.12.5",
+    "prettier": "2.3.1",
+    "sass": "^1.32.13"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.14.6",
+    "bootstrap": "^5.1.0",
+    "dotenv": "^10.0.0",
+    "instantsearch.js": "^4.38.1",
+    "lodash": "^4.17.21",
+    "typesense": "^1.2.0-0",
+    "typesense-instantsearch-adapter": "^2.4.0-0"
+  }
+}
